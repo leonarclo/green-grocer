@@ -20,7 +20,6 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-
   bool isObscure = true;
 
   @override
@@ -46,7 +45,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       isObscure = !isObscure;
                     });
                   },
-                  icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
+                  icon:
+                      Icon(isObscure ? Icons.visibility : Icons.visibility_off),
                 )
               : null,
           labelText: widget.label,

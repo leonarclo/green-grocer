@@ -1,9 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:green_grocer/src/auth/sing_up_screen.dart';
-import 'package:green_grocer/src/base/base_screen.dart';
+import 'package:green_grocer/src/pages/auth/sing_up_screen.dart';
 
-import '../config/custom_colors.dart';
+import '../../config/custom_colors.dart';
+import '../base/base_screen.dart';
 import 'components/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -123,7 +123,10 @@ class SignInScreen extends StatelessWidget {
                           ),
                           const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text("ou"),
+                            child: Text(
+                              "ou",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                           Expanded(
                             child: Divider(
@@ -144,7 +147,7 @@ class SignInScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (c) {
-                            return SignUpScreen();
+                            return const SignUpScreen();
                           }));
                         },
                         child: const Text(

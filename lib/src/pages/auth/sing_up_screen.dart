@@ -1,8 +1,8 @@
 import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
-import 'package:green_grocer/src/auth/components/custom_text_field.dart';
 
-import '../config/custom_colors.dart';
+import '../../config/custom_colors.dart';
+import 'components/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -27,7 +27,10 @@ class SignUpScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: const Icon(Icons.arrow_back_ios, color: Colors.white,),
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -72,12 +75,17 @@ class SignUpScreen extends StatelessWidget {
                         CustomTextField(
                           icon: Icons.phone,
                           label: "Telefone",
-                          inputFormatters: [TextInputMask(mask: ['(99) 9 9999-9999', '(99) 9999-9999'])],
+                          inputFormatters: [
+                            TextInputMask(
+                                mask: ['(99) 9 9999-9999', '(99) 9999-9999'])
+                          ],
                         ),
                         CustomTextField(
                           icon: Icons.file_copy,
                           label: "CPF",
-                          inputFormatters: [TextInputMask(mask: '999.999.999-99')],
+                          inputFormatters: [
+                            TextInputMask(mask: '999.999.999-99')
+                          ],
                         ),
                         SizedBox(
                           height: 50,
