@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:green_grocer/src/pages/widgets/custom_text_field.dart';
 import 'package:green_grocer/src/config/app_data.dart' as app_data;
 
-class ProfileTab extends StatelessWidget {
+class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
 
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
+
+class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +58,9 @@ class ProfileTab extends StatelessWidget {
           SizedBox(
             height: 45,
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                updatePassword();
+              },
               style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -68,5 +75,31 @@ class ProfileTab extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<bool?> updatePassword() {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return const Dialog(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                CustomTextField(
+                  icon: Icons.lock,
+                  label: "Senha Atual",
+                ),
+                CustomTextField(
+                  icon: Icons.lock,
+                  label: "Nova Senha",
+                ),
+                CustomTextField(
+                  icon: Icons.lock,
+                  label: "Confirmar Nova Senha",
+                ),
+              ]),
+            ),
+          );
+        });
   }
 }
