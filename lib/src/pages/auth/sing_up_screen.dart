@@ -2,7 +2,7 @@ import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/custom_colors.dart';
-import 'components/custom_text_field.dart';
+import '../widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -91,11 +91,14 @@ class SignUpScreen extends StatelessWidget {
                           height: 50,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18))),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)),
+                            ),
                             onPressed: () {},
-                            child: const Text('Entrar',
-                                style: TextStyle(fontSize: 18)),
+                            child: const Text(
+                              'Entrar',
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
                         ),
                       ],
