@@ -4,14 +4,19 @@ import 'package:green_grocer/src/models/cart_item_model.dart';
 import 'package:green_grocer/src/pages/widgets/quantity_widget.dart';
 import 'package:green_grocer/src/services/utils_services.dart';
 
-class CartTile extends StatelessWidget {
+class CartTile extends StatefulWidget {
   final CartItemModel cartItem;
-  final UtilsServices utilsServices = UtilsServices();
+  final Function(CartItemModel) remove;
 
-  CartTile({
-    super.key,
-    required this.cartItem,
-  });
+  const CartTile(
+      {super.key, required this.cartItem, required this.remove, required});
+
+  @override
+  State<CartTile> createState() => _CartTileState();
+}
+
+class _CartTileState extends State<CartTile> {
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +28,14 @@ class CartTile extends StatelessWidget {
       child: ListTile(
         // imagem
         leading: Image.asset(
-          cartItem.item.imageUrl,
+          widget.cartItem.item.imageUrl,
           height: 60,
           width: 60,
         ),
 
         // titulo
         title: Text(
-          cartItem.item.itemName,
+          widget.cartItem.item.itemName,
           style: const TextStyle(
             fontWeight: FontWeight.w500,
           ),
@@ -39,7 +44,7 @@ class CartTile extends StatelessWidget {
 
         subtitle: Text(
           utilsServices.priceToCurrency(
-            cartItem.totalPrice(),
+            widget.cartItem.totalPrice(),
           ),
           style: TextStyle(
             color: CustomColors.customSwatchColor,
@@ -49,9 +54,18 @@ class CartTile extends StatelessWidget {
 
         // quantidade
         trailing: QuantityWidget(
-          value: cartItem.quantity,
-          suffixText: cartItem.item.unit,
-          result: (quantity) {},
+          isRemovable: true,
+          value: widget.cartItem.quantity,
+          suffixText: widget.cartItem.item.unit,
+          result: (quantity) {
+            setState(() {
+              widget.cartItem.quantity = quantity;
+
+              if (quantity == 0) {
+                widget.remove(widget.cartItem);
+              }
+            });
+          },
         ),
       ),
     );

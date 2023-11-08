@@ -22,7 +22,7 @@ class _BaseScreenState extends State<BaseScreen> {
         controller: pageController,
         children: [
           const HomeTab(),
-          CartTab(),
+          const CartTab(),
           Container(
             color: Colors.yellow,
           ),

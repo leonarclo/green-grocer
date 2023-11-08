@@ -24,7 +24,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.withAlpha(40),
+      backgroundColor: const Color.fromARGB(255, 241, 241, 241).withAlpha(180),
       body: Stack(
         children: [
           // conteúdo
